@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5">
+       <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <p class="h1 text-center">Manager Student</p>
+            <form action="/" method="post">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Mã sinh viên</label>
+                    <input type="text" class="form-control" name="maSV" value="<%= student.maSV %>">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Họ tên</label>
+                    <input type="text" class="form-control" name="hoTen" value="<%= student.hoTen %>">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Ngày sinh</label>
+                  <input type="text" class="form-control" name="ngaySinh" value="<%= student.ngaySinh %>">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Lớp</label>
+                  <input type="text" class="form-control" name="lop" value="<%= student.lop %>">
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="submit" class="btn btn-success" style="margin-right: 10px;">Save</button>
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+       </div>
+       <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Mã sinh viên</th>
+            <th scope="col">Họ tên</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Lớp</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0; i < data.length; i++) { %>
+                <tr>
+                  <th scope="row"><%= i %></th>
+                  <td><%= data[i].maSV %></td>
+                  <td><%= data[i].hoTen %></td>
+                  <td><%= data[i].ngaySinh %></td>
+                  <td><%= data[i].lop %></td>
+                  <td>
+                    <a class="btn btn-primary text-decoration-none" href="<%= `/edit/${data[i].id}` %>">Edit</a>
+                    <a class="btn btn-danger text-decoration-none" href="<%= `/delete/${data[i].id}` %>">Delete</a>
+                  </td>
+                </tr>
+             <% } %>
+        </tbody>
+      </table>
+    </div>
+</body>
+</html>
